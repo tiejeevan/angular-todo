@@ -1,0 +1,30 @@
+<main class="todoapp">
+  <header class="header">
+    <h1>todos</h1>
+    <form enctype="application/x-www-form-urlencoded" role="form" novalidate>
+      <input class="new-todo" (focusout)="onFocusOut($event)" (keyup.enter)="onEnter($event)" placeholder="What needs to be done" autofocus>
+    </form>
+  </header>
+  <section class="main">
+    <app-complete-all></app-complete-all>
+    <app-todos-list [toDOTask]="toDOTask" (atleastOneTask)="atleastOneTaskExists($event)" (completedTasks)="completedTasks($event)"></app-todos-list>
+  </section>
+  <footer class="footer" *ngIf="atLeastOneTaskExists > 0">
+    <span class="todo-count">{{atLeastOneTaskExists-completedTasksNumber}} items left</span>
+    <ul class="filters">
+      <li>
+        <a href="#" id="all" class="selected">All</a>
+      </li>
+      <li>
+        <a href="#" id="active" class ='btn' (click)="showOnlyActive($event)">Active</a>
+      </li>
+      <li>
+        <a href="#" id="completed" class ='btn' (click)="showOnlyComplete($event)">Completed</a>
+      </li>
+    </ul>
+    <button id="clear" class="clear-completed" (click)="clearCompleted($event)">Clear completed</button>
+  </footer>
+</main>
+<footer class="info">
+  <p>Double-click to edit a todo</p>
+</footer>

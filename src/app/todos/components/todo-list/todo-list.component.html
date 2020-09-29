@@ -1,0 +1,12 @@
+<ul class="todo-list" >
+ 
+  <li *ngFor="let toDOTask of toDOTaskInput" [ngClass]="{'completed' : toDOTask.checked}">
+    <div class="view">
+      <input class="toggle" type="checkbox" checked="true" *ngIf = "toDOTask.checked" (change)="changeStatus($event,toDOTask.id)"/>
+      <input class="toggle" type="checkbox" *ngIf = "!(toDOTask.checked)" (change)="changeStatus($event,toDOTask.id)"/>
+      <label>{{toDOTask.name}}</label>
+      <button class="destroy" (click)="removeTask($event, toDOTask.id)"></button>
+    </div>
+  </li>
+</ul>
+
